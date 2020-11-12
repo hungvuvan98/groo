@@ -21,18 +21,18 @@ namespace web.Controllers
             _jWTService = jWTService;
         }
 
-        [AllowAnonymous]
-        [HttpPost]
-        [Route(nameof(Login))]
-        public ActionResult<LoginResponseModel> Login(string id, string password)
-        {
-            var user = _unitOfWork.User.Find(x => x.Id == id && x.Password == password).ToList().First();
-            if (user == null)
-            {
-                return NotFound("Account does not exist! ");
-            }
-            var token = _jWTService.GenerateToken(user.Id, user.FullName, user.Role);
-            return token;
-        }
+        //[AllowAnonymous]
+        //[HttpPost]
+        //[Route(nameof(Login))]
+        //public ActionResult<LoginResponseModel> Login(string id, string password)
+        //{
+        //    var user = _unitOfWork.User.Find(x => x.Id == id && x.Password == password).ToList().First();
+        //    if (user == null)
+        //    {
+        //        return NotFound("Account does not exist! ");
+        //    }
+        //    var token = _jWTService.GenerateToken(user.Id, user.FullName, user.Role);
+        //    return token;
+        //}
     }
 }

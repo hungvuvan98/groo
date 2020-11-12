@@ -4,7 +4,7 @@ using DAL.IRepositories;
 
 namespace DAL.Repositories
 {
-    public class OrderRepository : Repository<Order>, IOrderRepository
+    public class OrderRepository : Repository<Export>, IOrderRepository
     {
         public OrderRepository(AppDbContext context) : base(context)
         {

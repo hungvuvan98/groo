@@ -3,23 +3,24 @@ using System.Collections.Generic;
 
 namespace DAL.Entities
 {
-    public class Provider
+    public class ProductCategory
     {
-        public Provider()
+        public ProductCategory()
         {
             Products = new HashSet<Product>();
         }
-
         public string Id { get; set; }
-
+        
         public string Name { get; set; }
 
-        public string Address { get; set; }
+        public string Description { get; set; }
 
-        public string Phone { get; set; }
+        public string CreatedDate { get; set; }
 
-        public Status Status { get; set; }
+        public string ModifiedDate { get; set; }
 
         public ICollection<Product> Products { get; set; }
+
+        public Status Status { get; set; }
     }
 }

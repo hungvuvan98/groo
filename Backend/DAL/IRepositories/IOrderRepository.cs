@@ -3,7 +3,7 @@ using DAL.Infrastructures;
 
 namespace DAL.IRepositories
 {
-    public interface IOrderRepository : IRepository<Order>
+    public interface IOrderRepository : IRepository<Export>
     {
     }
 }

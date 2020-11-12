@@ -4,11 +4,11 @@ using System.Collections.Generic;
 
 namespace DAL.Entities
 {
-    public class Order
+    public class Export
     {
-        public Order()
+        public Export()
         {
-            OrderDetails = new HashSet<OrderDetail>();
+            ExportDetails = new HashSet<ExportDetail>();
         }
 
         public string Id { get; set; }
@@ -17,15 +17,19 @@ namespace DAL.Entities
 
         public string CustomerPhone { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime ExportDate { get; set; }
 
         public Payment PaymentMethod { get; set; }
+
+        public string Description { get; set; }
+
+        public float TotalMoney { get; set; }
 
         public Status Status { get; set; }
 
         public string CreatedByUserId { get; set; }
-        public User Users { get; set; }
+        public User User { get; set; }
 
-        public ICollection<OrderDetail> OrderDetails { get; set; }
+        public ICollection<ExportDetail> ExportDetails { get; set; }
     }
 }

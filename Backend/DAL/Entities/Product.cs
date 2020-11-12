@@ -8,10 +8,18 @@ namespace DAL.Entities
     {
         public Product()
         {
-            OrderDetails = new HashSet<OrderDetail>();
+            ExportDetails = new HashSet<ExportDetail>();
+            ImportDetails = new HashSet<ImportDetail>();
+            Warehouses = new HashSet<Warehouse>();
         }
 
         public string Id { get; set; }
+
+        public string ProviderId { get; set; }
+        public Provider Provider { get; set; }
+
+        public string ProductCategoryId { get; set; }
+        public ProductCategory ProductCategory { get; set; }
 
         public string Name { get; set; }
 
@@ -25,8 +33,6 @@ namespace DAL.Entities
 
         public string Image { get; set; }
 
-        public int Quantity { get; set; }
-
         public DateTime? CreatedDate { get; set; }
 
         public DateTime? ModifiedDate { get; set; }
@@ -35,11 +41,12 @@ namespace DAL.Entities
 
         public string ModifiedByUserId { get; set; }
 
-        public string ProviderId { get; set; }
-        public Provider Provider { get; set; }
-
         public Status Status { get; set; }
 
-        public ICollection<OrderDetail> OrderDetails { get; set; }
+        public ICollection<ExportDetail> ExportDetails { get; set; }
+
+        public ICollection<ImportDetail> ImportDetails { get; set; }
+
+        public ICollection<Warehouse> Warehouses { get; set; }
     }
 }

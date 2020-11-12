@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\haita\\Desktop\\web\\DAL\\DAL.csproj": {}
+    "D:\\destop\\groo\\Backend\\DAL\\DAL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\haita\\Desktop\\web\\DAL\\DAL.csproj": {
+    "D:\\destop\\groo\\Backend\\DAL\\DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\haita\\Desktop\\web\\DAL\\DAL.csproj",
+        "projectUniqueName": "D:\\destop\\groo\\Backend\\DAL\\DAL.csproj",
         "projectName": "DAL",
-        "projectPath": "C:\\Users\\haita\\Desktop\\web\\DAL\\DAL.csproj",
+        "projectPath": "D:\\destop\\groo\\Backend\\DAL\\DAL.csproj",
         "packagesPath": "C:\\Users\\haita\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\haita\\Desktop\\web\\DAL\\obj\\",
+        "outputPath": "D:\\destop\\groo\\Backend\\DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\haita\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -68,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }

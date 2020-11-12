@@ -8,7 +8,10 @@ namespace DAL.Entities
     {
         public User()
         {
-            Orders = new HashSet<Order>();
+            Exports = new HashSet<Export>();
+            Imports= new HashSet<Import>();
+            UserRoles = new HashSet<UserRole>();
+            Salaries = new HashSet<Salary>();
         }
 
         public string Id { get; set; }
@@ -27,8 +30,12 @@ namespace DAL.Entities
 
         public Status Status { get; set; }
 
-        public string Role { get; set; }
+        public ICollection<Export> Exports { get; set; }
 
-        public ICollection<Order> Orders { get; set; }
+        public ICollection<Import> Imports { get; set; }
+
+        public ICollection<UserRole> UserRoles { get; set; }
+
+        public ICollection<Salary> Salaries { get; set; }
     }
 }
