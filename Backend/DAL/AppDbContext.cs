@@ -14,15 +14,30 @@ namespace DAL
         {
         }
 
-        public DbSet<Export> Orders { get; set; }
+        public DbSet<Export> Exports { get; set; }
 
-        public DbSet<ExportDetail> OrderDetails { get; set; }
+        public DbSet<ExportDetail> ExportDetails { get; set; }
 
         public DbSet<Product> Products { get; set; }
 
         public DbSet<Provider> Providers { get; set; }
 
         public DbSet<User> Users { get; set; }
+
+        public DbSet<Import> Imports { get; set; }
+
+        public DbSet<ImportDetail> ImportDetails { get; set; }
+
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+
+        public DbSet<Role> Roles { get; set; }
+
+        public DbSet<UserRole> UserRoles { get; set; }
+
+        public DbSet<Salary> Salaries { get; set; }
+
+        public DbSet<Warehouse> Warehouses { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -55,7 +70,7 @@ namespace DAL
 
             modelBuilder.Entity<ExportDetail>(entity =>
             {
-                entity.HasKey(e => new { e.ExportId, e.ProductId, e.ProviderId })
+                entity.HasKey(e => new { e.ExportId, e.ProductId })
                       .HasName("PK__ExportDetail");
 
                 entity.ToTable("ExportDetails");
@@ -70,10 +85,7 @@ namespace DAL
                    .HasMaxLength(10)
                    .IsRequired();
 
-                entity.Property(e => e.ProviderId)
-                   .HasColumnName("ProviderId")
-                   .HasMaxLength(10)
-                   .IsRequired();
+              
 
                 entity.HasOne(d => d.Export)
                       .WithMany(p => p.ExportDetails)
@@ -82,7 +94,7 @@ namespace DAL
 
                 entity.HasOne(d => d.Product)
                       .WithMany(p => p.ExportDetails)
-                      .HasForeignKey(d => new { d.ProductId, d.ProviderId })
+                      .HasForeignKey(d => new { d.ProductId })
                       .OnDelete(DeleteBehavior.Cascade)
                       .HasConstraintName("FK__product__exportdetail11");
             });
@@ -107,7 +119,7 @@ namespace DAL
 
             modelBuilder.Entity<ImportDetail>(entity =>
             {
-                entity.HasKey(e => new { e.ImportId, e.ProductId, e.ProviderId })
+                entity.HasKey(e => new { e.ImportId, e.ProductId })
                       .HasName("PK__ImportDetail");
 
                 entity.ToTable("ImportDetails");
@@ -121,9 +133,7 @@ namespace DAL
                    .HasColumnName("ProductId")
                    .HasMaxLength(10).IsRequired();
 
-                entity.Property(e => e.ProviderId)
-                   .HasColumnName("ProviderId")
-                   .HasMaxLength(10).IsRequired();
+                
 
                 entity.HasOne(d => d.Import)
                       .WithMany(p => p.ImportDetails)
@@ -132,7 +142,7 @@ namespace DAL
 
                 entity.HasOne(d => d.Product)
                       .WithMany(p => p.ImportDetails)
-                      .HasForeignKey(d => new { d.ProductId, d.ProviderId })
+                      .HasForeignKey(d => new { d.ProductId })
                       .OnDelete(DeleteBehavior.Cascade)
                       .HasConstraintName("FK__product__importdetail");
                 
@@ -140,7 +150,7 @@ namespace DAL
 
             modelBuilder.Entity<Product>(entity =>
             {
-                entity.HasKey(e => new { e.Id, e.ProviderId })
+                entity.HasKey(e => new { e.Id })
                       .HasName("PK__product");
 
                 entity.ToTable("Products");
@@ -313,7 +323,7 @@ namespace DAL
 
             modelBuilder.Entity<Warehouse>(entity =>
             {
-                entity.HasKey(e => new { e.ProductId, e.ProviderId })
+                entity.HasKey(e => new { e.ProductId })
                       .HasName("PK__warehouse");
 
                 entity.ToTable("Warehouses");
@@ -328,7 +338,7 @@ namespace DAL
 
                 entity.HasOne(d => d.Product)
                       .WithMany(p => p.Warehouses)
-                      .HasForeignKey(d =>new { d.ProductId, d.ProviderId })
+                      .HasForeignKey(d =>new { d.ProductId })
                       .OnDelete(DeleteBehavior.Cascade);
 
             });

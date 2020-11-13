@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,6 +15,6 @@ namespace DAL.Entities
 
         public ICollection<UserRole> UserRoles { get; set; } = new HashSet<UserRole>();
 
-        public string Status { get; set; }
+        public Status Status { get; set; }
     }
 }

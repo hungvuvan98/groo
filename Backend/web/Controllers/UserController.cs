@@ -21,18 +21,26 @@ namespace web.Controllers
             _jWTService = jWTService;
         }
 
-        //[AllowAnonymous]
-        //[HttpPost]
-        //[Route(nameof(Login))]
-        //public ActionResult<LoginResponseModel> Login(string id, string password)
-        //{
-        //    var user = _unitOfWork.User.Find(x => x.Id == id && x.Password == password).ToList().First();
-        //    if (user == null)
-        //    {
-        //        return NotFound("Account does not exist! ");
-        //    }
-        //    var token = _jWTService.GenerateToken(user.Id, user.FullName, user.Role);
-        //    return token;
-        //}
+        [AllowAnonymous]
+        [HttpPost]
+        [Route(nameof(Login))]
+        public ActionResult<LoginResponseModel> Login(string id, string password)
+        {
+            var user = _unitOfWork.User.Find(x => x.Id == id && x.Password == password).FirstOrDefault();
+            var listUserRole = _unitOfWork.UserRole.Find(x => x.UserId == user.Id).ToList();
+            List<string> listRoleId = new List<string>();
+            foreach(var item in listUserRole)
+            {
+                var roleName = _unitOfWork.Role.Find(x => x.Id == item.RoleId).FirstOrDefault().Name;
+                listRoleId.Add(roleName);
+
+            }
+            if (user == null)
+            {
+                throw new Exception("Wrong username or password");
+            }
+            var token = _jWTService.GenerateToken(user.Id, user.FullName, listRoleId);
+            return token;
+        }
     }
 }

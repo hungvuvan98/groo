@@ -5,15 +5,29 @@ namespace DAL.Infrastructures
 {
     public interface IUnitOfWork
     {
-        IOrderDetailRepository OrderDetail { get; }
+        IExportDetailRepository ExportDetail{ get; }
 
-        IOrderRepository Order { get; }
+        IExportRepository Export { get; }
+
+        IImportDetailRepository ImportDetail { get; }
+
+        IImportRepository Import { get; }
 
         IProductRepository Product { get; }
 
+        IProductCategoryRepository ProductCategory { get; }
+
         IProviderRepository Provider { get; }
 
+        IRoleRepository Role { get; }
+
+        ISalaryRepository Salary { get; }
+
         IUserRepository User { get; }
+
+        IUserRoleRepository UserRole { get; }
+
+        IWarehouseRepository Warehouse { get; }
 
         Task<int> SaveChanges();
     }

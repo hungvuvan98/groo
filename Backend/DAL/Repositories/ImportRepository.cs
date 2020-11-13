@@ -4,9 +4,9 @@ using DAL.IRepositories;
 
 namespace DAL.Repositories
 {
-    public class OrderDetailRepository : Repository<ExportDetail>, IOrderDetailRepository
+    public class ImportRepository : Repository<Import>, IImportRepository
     {
-        public OrderDetailRepository(AppDbContext context) : base(context)
+        public ImportRepository(AppDbContext context) : base(context)
         {
         }
 

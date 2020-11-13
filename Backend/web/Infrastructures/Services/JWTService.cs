@@ -20,7 +20,7 @@ namespace web.Infrastructures.Services
             _appSetting = appSetting.Value;
         }
 
-        public LoginResponseModel GenerateToken(string Id, string name, string role)
+        public LoginResponseModel GenerateToken(string Id, string name, List<string> listRole)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -31,13 +31,15 @@ namespace web.Infrastructures.Services
                 Subject = new ClaimsIdentity(new[] {
                     //new Claim("name", name) ,
                     new Claim(ClaimTypes.Name,name),
-                     new Claim(ClaimTypes.NameIdentifier,Id),
-                      new Claim(ClaimTypes.Role,role)
+                     new Claim(ClaimTypes.NameIdentifier,Id)
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
-
+            foreach(var item in listRole)
+            {
+                tokenDescriptor.Subject.AddClaim(new Claim(ClaimTypes.Role, item));
+            }
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var encryptedToken = tokenHandler.WriteToken(token);
             return new LoginResponseModel

@@ -8,36 +8,63 @@ namespace DAL.Infrastructures
     {
         private readonly AppDbContext _context;
 
-        private IOrderDetailRepository _orderDetail;
-        private IOrderRepository _order;
+        private IExportDetailRepository _exportDetail;
+        private IExportRepository _export;
+        private IImportDetailRepository _importDetail;
+        private IImportRepository _import;
         private IProductRepository _product;
+        private IProductCategoryRepository _productCategory;
         private IProviderRepository _provider;
+        private IRoleRepository _role;
+        private ISalaryRepository _salary;
         private IUserRepository _user;
+        private IUserRoleRepository _userRole;
+        private IWarehouseRepository _warehouse;
 
-        public UnitOfWork(AppDbContext appContext)
-        {
-            _context = appContext;
-        }
+        public UnitOfWork(AppDbContext appContext)=> _context = appContext;
+ 
 
-        public IOrderDetailRepository OrderDetail
+        public IExportDetailRepository ExportDetail
         {
             get
             {
-                if (_orderDetail == null)
-                    _orderDetail = new OrderDetailRepository(_context);
+                if (_exportDetail == null)
+                    _exportDetail = new ExportDetailRepository(_context);
 
-                return _orderDetail;
+                return _exportDetail;
             }
         }
 
-        public IOrderRepository Order
+        public IExportRepository Export
         {
             get
             {
-                if (_order == null)
-                    _order = new OrderRepository(_context);
+                if (_export == null)
+                    _export = new ExportRepository(_context);
 
-                return _order;
+                return _export;
+            }
+        }
+
+        public IImportDetailRepository ImportDetail
+        {
+            get
+            {
+                if (_importDetail == null)
+                    _importDetail = new ImportDetailRepository(_context);
+
+                return _importDetail;
+            }
+        }
+
+        public IImportRepository Import
+        {
+            get
+            {
+                if (_import == null)
+                    _import = new ImportRepository(_context);
+
+                return _import;
             }
         }
 
@@ -52,6 +79,17 @@ namespace DAL.Infrastructures
             }
         }
 
+        public IProductCategoryRepository ProductCategory
+        {
+            get
+            {
+                if (_productCategory == null)
+                    _productCategory = new ProductCategoryRepository(_context);
+
+                return _productCategory;
+            }
+        }
+
         public IProviderRepository Provider
         {
             get
@@ -63,6 +101,27 @@ namespace DAL.Infrastructures
             }
         }
 
+        public IRoleRepository Role
+        {
+            get
+            {
+                if (_role == null)
+                    _role = new RoleRepository(_context);
+
+                return _role;
+            }
+        }
+
+        public ISalaryRepository Salary
+        {
+            get
+            {
+                if (_salary == null)
+                    _salary = new SalaryRepository(_context);
+
+                return _salary;
+            }
+        }
         public IUserRepository User
         {
             get
@@ -74,6 +133,27 @@ namespace DAL.Infrastructures
             }
         }
 
+        public IUserRoleRepository UserRole
+        {
+            get
+            {
+                if (_userRole == null)
+                    _userRole = new UserRoleRepository(_context);
+
+                return _userRole;
+            }
+        }
+
+        public IWarehouseRepository Warehouse
+        {
+            get
+            {
+                if (_warehouse == null)
+                    _warehouse = new WarehouseRepository(_context);
+
+                return _warehouse;
+            }
+        }
         public async Task<int> SaveChanges()
         => await _context.SaveChangesAsync();
     }

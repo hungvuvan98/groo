@@ -5,7 +5,6 @@
         public string ImportId { get; set; }
         public Import Import { get;set; }
 
-        public string ProviderId { get; set; }
         public string ProductId { get; set; }
         public Product Product { get; set; }
 

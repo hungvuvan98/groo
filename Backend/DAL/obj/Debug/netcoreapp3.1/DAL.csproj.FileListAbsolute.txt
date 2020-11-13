@@ -20,3 +20,4 @@ D:\destop\groo\Backend\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CoreCompileInputs.
 D:\destop\groo\Backend\DAL\obj\Debug\netcoreapp3.1\DAL.dll
 D:\destop\groo\Backend\DAL\obj\Debug\netcoreapp3.1\DAL.pdb
 D:\destop\groo\Backend\DAL\obj\Debug\netcoreapp3.1\DAL.genruntimeconfig.cache
+D:\destop\groo\Backend\DAL\obj\Debug\netcoreapp3.1\DAL.csprojAssemblyReference.cache
