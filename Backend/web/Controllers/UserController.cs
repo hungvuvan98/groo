@@ -24,9 +24,13 @@ namespace web.Controllers
         [AllowAnonymous]
         [HttpPost]
         [Route(nameof(Login))]
-        public ActionResult<LoginResponseModel> Login(string id, string password)
+        public ActionResult<LoginResponseModel> Login(LoginModel model)
         {
-            var user = _unitOfWork.User.Find(x => x.Id == id && x.Password == password).FirstOrDefault();
+            var user = _unitOfWork.User.Find(x => x.Id == model.Id && x.Password == model.Password).FirstOrDefault();
+            if (user == null)
+            {
+                return NotFound("Sai tên đăng nhập hoặc mật khẩu");
+            }
             var listUserRole = _unitOfWork.UserRole.Find(x => x.UserId == user.Id).ToList();
             List<string> listRoleId = new List<string>();
             foreach(var item in listUserRole)
@@ -34,11 +38,7 @@ namespace web.Controllers
                 var roleName = _unitOfWork.Role.Find(x => x.Id == item.RoleId).FirstOrDefault().Name;
                 listRoleId.Add(roleName);
 
-            }
-            if (user == null)
-            {
-                throw new Exception("Wrong username or password");
-            }
+            }          
             var token = _jWTService.GenerateToken(user.Id, user.FullName, listRoleId);
             return token;
         }
