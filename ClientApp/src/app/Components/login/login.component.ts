@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from '../../Services/Authentication/auth.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class LoginComponent implements OnInit {
   isFocusName: boolean=true
   isFocusPass: boolean = false
   loginForm:FormGroup
-  constructor(private fb: FormBuilder,private authService:AuthService) {
+  constructor(private fb: FormBuilder,private authService:AuthService,private route:Router) {
     this.loginForm = this.fb.group({
       id: ['',Validators.required],
       password: ['',Validators.required]
@@ -20,14 +21,15 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    document.getElementById("onFocus").focus();
+    document.getElementById("onFocus").focus(); 
   }
 
   Login() {
     this.authService.Login(this.loginForm.value).subscribe(data => {
-      console.log(data)
       this.authService.saveToken(data['token']);
-       // this.route.navigate(['student'])
+      if (this.authService.isAuthenticated() == true) {
+        this.route.navigate(['']);
+      }
     })
     
   }

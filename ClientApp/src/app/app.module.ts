@@ -14,11 +14,15 @@ import { NotificationService } from './Services/Notification/notification.servic
 import { NotifierModule } from 'angular-notifier';
 import { customNotifierOptions } from './Services/Notification/notification-config';
 import { CommonModule } from '@angular/common';
+import { SidebarComponent } from './Components/sidebar/sidebar.component';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [  
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    SidebarComponent,
+    DashboardComponent
   ],
   imports: [
     ReactiveFormsModule,
