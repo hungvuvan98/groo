@@ -1,0 +1,39 @@
+
+<div class=" content">
+  <div class=" row">
+    <div class=" col-md-12">
+      <div class=" card">
+        <div class=" card-header">
+          <h5 class=" title">100 Awesome Nucleo Icons</h5>
+        </div>
+        <div class=" card-body all-icons">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Mã sp</th>
+                <th scope="col">Tên</th>
+                <th scope="col">Giá nhập</th>
+                <th scope="col">Giá xuất</th>
+                <th scope="col">Số lượng tồn kho</th>
+                <th scope="col">Nhà cung cấp</th>
+                <th scope="col">Trạng thái</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of products">
+                <th scope="row">{{product.id}}</th>
+                <td>{{product.name}}</td>
+                <td>{{product.priceIn}}</td>
+                <td>{{product.priceOut}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.providerName}}</td>
+                <td>{{product.status}}</td>
+              </tr>
+             
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

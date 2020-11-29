@@ -73,7 +73,6 @@ C:\Users\haita\Desktop\web\web\obj\Debug\netcoreapp3.1\web.MvcApplicationPartsAs
 D:\destop\groo\Backend\web\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
 D:\destop\groo\Backend\web\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\destop\groo\Backend\web\bin\Debug\netcoreapp3.1\appsettings.json
-D:\destop\groo\Backend\web\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 D:\destop\groo\Backend\web\bin\Debug\netcoreapp3.1\web.exe
 D:\destop\groo\Backend\web\bin\Debug\netcoreapp3.1\web.deps.json
 D:\destop\groo\Backend\web\bin\Debug\netcoreapp3.1\web.runtimeconfig.json
@@ -142,3 +141,6 @@ D:\destop\groo\Backend\web\obj\Debug\netcoreapp3.1\staticwebassets\web.StaticWeb
 D:\destop\groo\Backend\web\obj\Debug\netcoreapp3.1\web.dll
 D:\destop\groo\Backend\web\obj\Debug\netcoreapp3.1\web.pdb
 D:\destop\groo\Backend\web\obj\Debug\netcoreapp3.1\web.genruntimeconfig.cache
+D:\destop\groo\Backend\web\obj\Debug\netcoreapp3.1\scopedcss\bundle\web.styles.css
+D:\destop\groo\Backend\web\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\destop\groo\Backend\web\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

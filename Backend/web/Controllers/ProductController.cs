@@ -1,4 +1,5 @@
-﻿using DAL.Entities;
+﻿using AutoMapper;
+using DAL.Entities;
 using DAL.Infrastructures;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -6,17 +7,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using web.Infrastructures.Services;
+using web.Model.products;
 
 namespace web.Controllers
 {
-    public class ProductController
+    public class ProductController:ApiControllerBase
     {
+        private IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ICurrentUserService _currentUserService;
-        public ProductController(IUnitOfWork unitOfWork,ICurrentUserService currentUserService )
+
+        public ProductController(IUnitOfWork unitOfWork, ICurrentUserService currentUserService,IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _currentUserService = currentUserService;
+            _mapper = mapper;
         }
 
         [HttpPost]
@@ -46,5 +51,31 @@ namespace web.Controllers
             return 1;
         }
 
+        [HttpGet]
+        [Route(nameof(GetAll))]
+        public async Task<List<ProductResponseModel>> GetAll()
+        {
+            var listProductResponse = new List<ProductResponseModel>();
+
+            var listProduct = _unitOfWork.Product.GetAll().ToList();
+
+            foreach (var item in listProduct)
+            {
+               var productRes = _mapper.Map<ProductResponseModel>(item);
+
+                productRes.ProductCategoryName = _unitOfWork.ProductCategory
+                                                            .Find(x => x.Id == item.ProductCategoryId)
+                                                            .First().Name;
+                productRes.ProviderName = _unitOfWork.Provider
+                                                            .Find(x => x.Id == item.ProviderId)
+                                                            .First().Name;
+                productRes.Quantity = _unitOfWork.Warehouse
+                                          .Find(x => x.ProductId == item.Id && x.ProviderId == item.ProviderId)
+                                          .First().Quantity;
+
+                listProductResponse.Add(productRes);
+            }
+            return listProductResponse;
+        }
     }
 }
